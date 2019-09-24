@@ -62,6 +62,9 @@ class ClipShapeFrameLayout : FrameLayout {
 
                 val child = getChildAt(i)
                 val lp = child.layoutParams as LayoutParams
+                if (lp.notClip) {
+                    continue
+                }
                 val radius = lp.radius
 
                 val path = Path()
@@ -94,7 +97,6 @@ class ClipShapeFrameLayout : FrameLayout {
 
     val mode = PorterDuffXfermode(PorterDuff.Mode.SRC_OUT)
     override fun dispatchDraw(canvas: Canvas) {
-        super.dispatchDraw(canvas)
         if (isInEditMode) {
             pathList.forEachIndexed { index, path ->
                 canvas.clipPath(path, Region.Op.DIFFERENCE)
@@ -116,6 +118,7 @@ class ClipShapeFrameLayout : FrameLayout {
             }
             bgPaint.xfermode = null
         }
+        super.dispatchDraw(canvas)
     }
 
     override fun generateDefaultLayoutParams(): LayoutParams {
@@ -135,6 +138,7 @@ class ClipShapeFrameLayout : FrameLayout {
             if (attrs != null) {
                 val ta = c.obtainStyledAttributes(attrs, R.styleable.ClipShapeFrameLayout)
                 radius = ta.getDimension(R.styleable.ClipShapeFrameLayout_layout_shape_radius, 0F)
+                notClip = ta.getBoolean(R.styleable.ClipShapeFrameLayout_layout_not_clip, false)
                 ta.recycle()
             }
         }
@@ -147,5 +151,9 @@ class ClipShapeFrameLayout : FrameLayout {
         constructor(source: FrameLayout.LayoutParams) : super(source)
 
         var radius = 0f
+        /**
+         * 不剪裁，默认都裁剪。
+         */
+        var notClip = false
     }
 }

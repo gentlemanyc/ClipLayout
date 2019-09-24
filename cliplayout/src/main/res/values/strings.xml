@@ -2,6 +2,7 @@
     <string name="app_name">cliplayout</string>
     <declare-styleable name="ClipShapeFrameLayout">
         <attr name="layout_shape_radius" format="dimension" />
+        <attr name="layout_not_clip" format="boolean" />
         <attr name="clip_mask_color" format="color" />
     </declare-styleable>
 </resources>

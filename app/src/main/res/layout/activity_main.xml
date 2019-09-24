@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Hello World!"
-        app:clip_mask_color="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -30,6 +29,7 @@
             android:layout_gravity="right"
             android:layout_margin="20dp"
             app:layout_shape_radius="0dp" />
+
     </cc.core.ui.cliplayout.ClipShapeFrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
