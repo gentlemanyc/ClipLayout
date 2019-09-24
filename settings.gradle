@@ -1,0 +1,2 @@
+include ':app', ':cliplayout'
+rootProject.name='ClipShapeLayout'
