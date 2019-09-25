@@ -3,6 +3,10 @@
     <declare-styleable name="ClipLayout">
         <attr name="layout_shape_radius" format="dimension" />
         <attr name="layout_ignore_clip" format="boolean" />
+        <attr name="layout_clip_type" format="integer">
+            <enum name="difference" value="0">0</enum>
+            <enum name="insert" value="1">1</enum>
+        </attr>
         <attr name="clip_mask_color" format="color" />
         <attr name="ignore_all_clip" format="boolean" />
     </declare-styleable>

@@ -22,6 +22,7 @@
             android:layout_height="120dp"
             android:layout_gravity="center_vertical|left"
             android:layout_margin="20dp"
+            app:layout_clip_type="insert"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_shape_radius="25dp" />
 
@@ -30,6 +31,7 @@
             android:layout_height="120dp"
             android:layout_gravity="right"
             android:layout_margin="20dp"
+            app:layout_clip_type="insert"
             app:layout_shape_radius="0dp" />
 
         <TextView

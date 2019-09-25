@@ -18,14 +18,22 @@ class ClipDelegate {
     var bgPath = Path()
     var bgPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     var maskColor = Color.BLACK
-    val mode = PorterDuffXfermode(PorterDuff.Mode.SRC_OUT)
+    var mode = PorterDuffXfermode(PorterDuff.Mode.SRC_OUT)
     var ignoreAll = false
+
+    var clipType = Region.Op.DIFFERENCE
 
     fun init(context: Context, attrs: AttributeSet?) {
         if (attrs != null) {
             val ta = context.obtainStyledAttributes(attrs, R.styleable.ClipLayout)
             maskColor = ta.getColor(R.styleable.ClipLayout_clip_mask_color, Color.BLACK)
             ignoreAll = ta.getBoolean(R.styleable.ClipLayout_ignore_all_clip, false)
+            val type = ta.getInt(R.styleable.ClipLayout_layout_clip_type, 0)
+            mode = when (type) {
+                0 -> PorterDuffXfermode(PorterDuff.Mode.SRC_OUT)
+                1 -> PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
+                else ->  PorterDuffXfermode(PorterDuff.Mode.SRC_OUT)
+            }
             ta.recycle()
         }
         bgPaint.color = maskColor
@@ -84,11 +92,10 @@ class ClipDelegate {
         if (ignoreAll) {
             return
         }
-        canvas.save()
         if (viewGroup.isInEditMode) {
             pathList.forEachIndexed { index, pair ->
                 if (pair.first.visibility == View.VISIBLE) {
-                    canvas.clipPath(pair.second, Region.Op.DIFFERENCE)
+                    canvas.clipPath(pair.second, clipType)
                 }
             }
             canvas.drawColor(maskColor)
@@ -110,7 +117,6 @@ class ClipDelegate {
             }
             bgPaint.xfermode = null
         }
-        canvas.restore()
     }
 }
 
