@@ -1,7 +1,22 @@
 # ClipLayout
 
 #### 介绍
-Anroid剪裁蒙版布局
+Anroid剪裁蒙版布局，可以用来做功能引导页，二维码扫描界面的扫描框等。
+
+#### 引入
+添加JitPack的仓库：
+```
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+
+```
+implementation 'com.github.gentlemanyc:ClipLayout:1.0.0'
+```
 
 #### 截图
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/0925/103647_8ff51c08_134008.png "深度截图_选择区域_20190925103630.png")
