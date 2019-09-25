@@ -84,6 +84,7 @@ class ClipDelegate {
         if (ignoreAll) {
             return
         }
+        canvas.save()
         if (viewGroup.isInEditMode) {
             pathList.forEachIndexed { index, pair ->
                 if (pair.first.visibility == View.VISIBLE) {
@@ -109,6 +110,7 @@ class ClipDelegate {
             }
             bgPaint.xfermode = null
         }
+        canvas.restore()
     }
 }
 
