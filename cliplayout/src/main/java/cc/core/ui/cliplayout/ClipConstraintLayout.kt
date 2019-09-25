@@ -3,6 +3,7 @@ package cc.core.ui.cliplayout
 import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
+import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 
@@ -41,6 +42,7 @@ class ClipConstraintLayout : ConstraintLayout {
 
     override fun dispatchDraw(canvas: Canvas) {
         clipDelegate.draw(this, canvas)
+        setLayerType(View.LAYER_TYPE_HARDWARE, null)
         super.dispatchDraw(canvas)
     }
 

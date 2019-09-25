@@ -35,9 +35,13 @@
             app:layout_shape_radius="0dp" />
 
         <TextView
+            android:id="@+id/v1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="这是一个正常的文字"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_ignore_clip="true" />
 
     </cc.core.ui.cliplayout.ClipConstraintLayout>

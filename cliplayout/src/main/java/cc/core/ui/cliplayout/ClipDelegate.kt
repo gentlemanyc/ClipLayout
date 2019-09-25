@@ -100,7 +100,6 @@ class ClipDelegate {
             }
             canvas.drawColor(maskColor)
         } else {
-            viewGroup.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
             canvas.save()
             canvas.drawRect(
                 viewGroup.left.toFloat(),
