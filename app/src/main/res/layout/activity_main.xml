@@ -23,7 +23,7 @@
             android:layout_margin="20dp"
             app:layout_shape_radius="195dp" />
 
-        <Space
+        <View
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_gravity="right"
