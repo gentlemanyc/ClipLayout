@@ -12,7 +12,7 @@ import android.widget.FrameLayout
 
 class ClipShapeFrameLayout : FrameLayout {
 
-    val clipDelegate = BaseClipDelegate()
+    val clipDelegate = ClipDelegate()
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
@@ -60,10 +60,10 @@ class ClipShapeFrameLayout : FrameLayout {
         @SuppressLint("CustomViewStyleable")
         constructor(c: Context, attrs: AttributeSet?) : super(c, attrs) {
             if (attrs != null) {
-                val ta = c.obtainStyledAttributes(attrs, R.styleable.ClipShapeFrameLayout)
-                radius = ta.getDimension(R.styleable.ClipShapeFrameLayout_layout_shape_radius, 0F)
+                val ta = c.obtainStyledAttributes(attrs, R.styleable.ClipLayout)
+                radius = ta.getDimension(R.styleable.ClipLayout_layout_shape_radius, 0F)
                 ignoreClip =
-                    ta.getBoolean(R.styleable.ClipShapeFrameLayout_layout_ignore_clip, false)
+                    ta.getBoolean(R.styleable.ClipLayout_layout_ignore_clip, false)
                 ta.recycle()
             }
         }

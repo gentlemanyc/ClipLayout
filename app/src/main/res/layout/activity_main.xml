@@ -7,21 +7,23 @@
     android:background="@drawable/ic_launcher_background"
     tools:context=".MainActivity">
 
-    <cc.core.ui.cliplayout.ClipShapeFrameLayout
+    <cc.core.ui.cliplayout.ClipConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Hello World!"
+        app:clip_mask_color="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Space
+        <View
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_gravity="center_vertical|left"
             android:layout_margin="20dp"
-            app:layout_shape_radius="195dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_shape_radius="25dp" />
 
         <View
             android:layout_width="120dp"
@@ -30,6 +32,6 @@
             android:layout_margin="20dp"
             app:layout_shape_radius="0dp" />
 
-    </cc.core.ui.cliplayout.ClipShapeFrameLayout>
+    </cc.core.ui.cliplayout.ClipConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

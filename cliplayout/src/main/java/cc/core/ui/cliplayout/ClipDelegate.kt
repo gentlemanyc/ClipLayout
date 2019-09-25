@@ -13,7 +13,7 @@ import android.view.ViewGroup
  * @author 袁超
  * @date  19-9-25上午9:08
  */
-class BaseClipDelegate {
+class ClipDelegate {
     var pathList = mutableListOf<Pair<View, Path>>()
     var bgPath = Path()
     var bgPaint = Paint(Paint.ANTI_ALIAS_FLAG)
@@ -23,9 +23,9 @@ class BaseClipDelegate {
 
     fun init(context: Context, attrs: AttributeSet?) {
         if (attrs != null) {
-            val ta = context.obtainStyledAttributes(attrs, R.styleable.ClipShapeFrameLayout)
-            maskColor = ta.getColor(R.styleable.ClipShapeFrameLayout_clip_mask_color, Color.BLACK)
-            ignoreAll = ta.getBoolean(R.styleable.ClipShapeFrameLayout_ignore_all_clip, false)
+            val ta = context.obtainStyledAttributes(attrs, R.styleable.ClipLayout)
+            maskColor = ta.getColor(R.styleable.ClipLayout_clip_mask_color, Color.BLACK)
+            ignoreAll = ta.getBoolean(R.styleable.ClipLayout_ignore_all_clip, false)
             ta.recycle()
         }
         bgPaint.color = maskColor
@@ -115,4 +115,17 @@ class BaseClipDelegate {
 interface ClipLayoutParams {
     fun radius(): Float
     fun ignoreClip(): Boolean
+
+    fun initAttrs(context: Context, attrs: AttributeSet?): Pair<Float, Boolean> {
+        var radius = 0F
+        var ignoreClip = false
+        if (attrs != null) {
+            val ta = context.obtainStyledAttributes(attrs, R.styleable.ClipLayout)
+            radius = ta.getDimension(R.styleable.ClipLayout_layout_shape_radius, 0F)
+            ignoreClip =
+                ta.getBoolean(R.styleable.ClipLayout_layout_ignore_clip, false)
+            ta.recycle()
+        }
+        return Pair(radius, ignoreClip)
+    }
 }
